@@ -12,6 +12,7 @@ import {
 import React, { useEffect } from 'react';
 import { Layout, Menu } from 'antd';
 import Home from './Home/Home';
+import Authentication from './Authentication/Authentication';
 const { Header, Content, Sider } = Layout;
 
 const App = () => {
@@ -65,6 +66,7 @@ return (
                 <Route exact path='/statistic' element={< ServiceStatistic />}></Route>
                 <Route exact path='/charts' element={< ServiceStatisticChart />}></Route>
                 <Route exact path='/history' element={< ServiceHistory />}></Route>
+                <Route exact path='/authentication' element={< Authentication />}></Route>
                 <Route exact path='/' element={< Home />}></Route>
             </Routes>
           </Content>
