@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { List } from 'antd';
+import axios from 'axios';
 
 const data = [
     <>
@@ -9,48 +10,37 @@ const data = [
         <span>
             19.11.2022
         </span>
-    </>,
-        <>
-        <span>
-            Статус послуги <a>#6546</a> змінено на: Виконано
-        </span>
-        <span>
-            19.11.2022
-        </span>
-    </>,
-    <>
-        <span>
-            Статус послуги <a>#7658</a> змінено на: В процесі
-        </span>
-        <span>
-            19.11.2022
-        </span>
-    </>,
-        <>
-        <span>
-            Видалено користувача: <a>#875</a>
-        </span>
-        <span>
-            18.11.2022
-        </span>
-    </>,
-    <>
-        <span>
-            Опис послуги <a>#7685</a> змінено на: Надання місця тимчасового проживання
-        </span>
-        <span>
-            18.11.2022
-        </span>
-    </>,
+    </>
   ];
 
-const ServiceHistory = () => (
+const ServiceHistory = () => {
+    const [notifications, setNotifications] = useState()
+
+    useEffect(() => {
+        axios.get('https://localhost:7299/api/notifications').then((response) => {
+
+            let newArr = response.data.map((n, i) => (
+               <>
+                <span>
+                    {n.notificationString}
+                </span>
+                <span>
+                    {n.dateCreated.substring(0, 10)}
+                </span>
+               </>
+            ))
+            setNotifications(newArr)
+
+        });
+    },[])
+
+    return (
     <List
     size="large"
     header={<div><b>Історія зміни послуг та користувачів</b></div>}
     bordered
-    dataSource={data}
+    dataSource={notifications}
     renderItem={(item) => <List.Item>{item}</List.Item>}
     />
-);
+)};
 export default ServiceHistory;

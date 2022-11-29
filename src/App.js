@@ -42,14 +42,8 @@ return (
               },
               {
                 key: '3',
-                label: 'Історія змін послуг',
+                label: 'Активності організації',
                 onClick: function () { navigate('/history'); }
-              }
-              ,
-              {
-                key: '4',
-                label: 'Список користувачів',
-                onClick: function () { navigate('/userlist'); }
               }
             ]}
           />
@@ -71,7 +65,6 @@ return (
                 <Route exact path='/statistic' element={< ServiceStatistic />}></Route>
                 <Route exact path='/charts' element={< ServiceStatisticChart />}></Route>
                 <Route exact path='/history' element={< ServiceHistory />}></Route>
-                <Route exact path='/userlist' element={< UserList />}></Route>
                 <Route exact path='/' element={< Home />}></Route>
             </Routes>
           </Content>

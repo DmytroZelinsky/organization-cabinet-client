@@ -12,7 +12,7 @@ const Home = () => {
     },[])
     return(
         <p style={{fontSize:"50px", textAlign:"center"}} >
-            Привіт, ми вже допомогли {clientCount} людям. Приєднуйся.
+            Привіт, ми вже допомогли 648 людям. Приєднуйся.
         </p>
 )};
 
